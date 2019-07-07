@@ -37,7 +37,7 @@ class ProcessM3U8Convent implements ShouldQueue
     public function handle(VideosRepository $repository) {
         $source = $repository->getDataByPrimaryKey($this->primaryKey);
         $source->status = VideoConventType::UPLOAD_CONVENT_M3U8;
-        $sourceFilePath = Storage::disk('public')->get($source->source_src);
+        $sourceFilePath = storage_path('app/public'). DIRECTORY_SEPARATOR . $source->source_src;
         $source->save();
         Storage::disk('public')->makeDirectory('m3u8');
 
