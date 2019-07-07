@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\Enums\VideoConventType;
 use App\Repository\VideosRepository;
-use FFMpeg\FFMpeg;
+use AYazdanpanah\FFMpegStreaming\FFMpeg;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -51,10 +51,9 @@ class ProcessM3U8Convent implements ShouldQueue
 
         FFMpeg::create($config)
             ->open($sourceFilePath)
-            ->DASH()
-            ->HEVC() // the format of the video.for use another formats, see Traits\Formats
+            ->HLS()
+            ->X264() // the format of the video.for use another formats, see Traits\Formats
             ->autoGenerateRepresentations() // auto generate representations
-            ->setAdaption('id=0,streams=v id=1,streams=a') // set the adaption.
             ->save($m3u8FilePath); // it can pass a path to the method or it can be null
 
         $repository->modifyConventResult($this->primaryKey,$m3u8FilePath,VideoConventType::UPLOAD_CONVENT_STATUS);
