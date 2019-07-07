@@ -7,6 +7,7 @@ use AYazdanpanah\FFMpegStreaming\FFMpeg;
 use Illuminate\Http\Request;
 use App\Repository\VideosRepository;
 use Illuminate\Support\Facades\Storage;
+use Interop\Queue\Queue;
 
 class VideoController extends Controller {
 
@@ -25,6 +26,7 @@ class VideoController extends Controller {
         $filepath = Storage::disk('public')->put('videos',$request->file('video'));
 
         $primaryKey = $this->videoResposity->createConventM3U8video($filepath,$request->post('name'));
+        
         dispatch(new ProcessM3U8Convent($primaryKey))->onQueue('m3u8')->delay(4000);
 
 
