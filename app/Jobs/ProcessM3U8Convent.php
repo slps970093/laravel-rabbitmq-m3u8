@@ -42,8 +42,14 @@ class ProcessM3U8Convent implements ShouldQueue
         Storage::disk('public')->makeDirectory('m3u8');
 
         $m3u8FilePath =  storage_path('app/public'). DIRECTORY_SEPARATOR . 'm3u8' . DIRECTORY_SEPARATOR . uniqid() .'.m3u8';
+        $config = [
+            'ffmpeg.binaries'  => '/usr/bin/ffmpeg',
+            'ffprobe.binaries' => '/usr/bin/ffprobe',
+            'timeout'          => 3600 * 60 * 5, // The timeout for the underlying process
+            'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
+        ];
 
-        FFMpeg::create()
+        FFMpeg::create($config)
             ->open($sourceFilePath)
             ->DASH()
             ->HEVC() // the format of the video.for use another formats, see Traits\Formats
