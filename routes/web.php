@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/video','VideoController@index');
+Route::post('/video','VideoController@upload');
+
