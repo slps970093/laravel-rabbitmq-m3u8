@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "184a8c498b8843d3d20cd08c6c550edc",
+    "content-hash": "7014804a9db96c83a58ffba65c235696",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -3586,16 +3586,16 @@
         },
         {
             "name": "vladimir-yuldashev/laravel-queue-rabbitmq",
-            "version": "v7.4.0",
+            "version": "v7.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vyuldashev/laravel-queue-rabbitmq.git",
-                "reference": "17a889c2aeb1058d498273b951c8ae5a6be1dfac"
+                "reference": "c653c42ffb982647fede016fc45c81dd576cb712"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vyuldashev/laravel-queue-rabbitmq/zipball/17a889c2aeb1058d498273b951c8ae5a6be1dfac",
-                "reference": "17a889c2aeb1058d498273b951c8ae5a6be1dfac",
+                "url": "https://api.github.com/repos/vyuldashev/laravel-queue-rabbitmq/zipball/c653c42ffb982647fede016fc45c81dd576cb712",
+                "reference": "c653c42ffb982647fede016fc45c81dd576cb712",
                 "shasum": ""
             },
             "require": {
@@ -3609,7 +3609,6 @@
             },
             "require-dev": {
                 "illuminate/events": "5.6.*|5.7.*|5.8.*",
-                "laravel/horizon": "^3.0",
                 "mockery/mockery": "^1.0",
                 "phpunit/phpunit": "^7.0"
             },
@@ -3639,8 +3638,8 @@
                     "email": "misterio92@gmail.com"
                 }
             ],
-            "description": "RabbitMQ driver for Laravel Queue. Supports Laravel Horizon",
-            "time": "2019-03-04T20:38:34+00:00"
+            "description": "RabbitMQ driver for Laravel Queue",
+            "time": "2019-03-27T19:40:42+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -26,8 +26,8 @@ class VideoController extends Controller {
         $filepath = Storage::disk('public')->put('videos',$request->file('video'));
 
         $primaryKey = $this->videoResposity->createConventM3U8video($filepath,$request->post('name'));
-        
-        dispatch(new ProcessM3U8Convent($primaryKey))->onQueue('m3u8')->delay(4000);
+
+        dispatch(new ProcessM3U8Convent($primaryKey))->onQueue('m3u8');
 
 
         return response()->json(['status' => true],201);
