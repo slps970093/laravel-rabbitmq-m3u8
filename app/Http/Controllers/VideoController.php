@@ -28,8 +28,7 @@ class VideoController extends Controller {
         $primaryKey = $this->videoResposity->createConventM3U8video($filepath,$request->post('name'));
 
         $job = (new ProcessM3U8Convent($primaryKey))
-            ->delay(Carbon::now()->addSeconds(3))
-            ->onQueue("m3u8");
+            ->onQueue("m3u8")
 
         $this->dispatch($job);
 
