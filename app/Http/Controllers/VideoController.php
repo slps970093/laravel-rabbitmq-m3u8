@@ -31,7 +31,7 @@ class VideoController extends Controller {
             ->delay(Carbon::now()->addSeconds(3))
             ->onQueue("m3u8");
 
-        dispatch($job);
+        $this->dispatch($job);
 
 
 
