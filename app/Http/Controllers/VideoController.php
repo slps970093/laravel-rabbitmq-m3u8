@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\ProcessM3U8Convent;
-use AYazdanpanah\FFMpegStreaming\FFMpeg;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Repository\VideosRepository;
 use Illuminate\Support\Facades\Storage;
-use Interop\Queue\Queue;
 
 class VideoController extends Controller {
 
@@ -28,9 +27,12 @@ class VideoController extends Controller {
 
         $primaryKey = $this->videoResposity->createConventM3U8video($filepath,$request->post('name'));
 
-        dispatch(new ProcessM3U8Convent($primaryKey))
-            ->onQueue('m3u8')
-            ->delay(Carbon::now()->addSeconds(5));
+        $job = (new ProcessM3U8Convent($primaryKey))
+            ->delay(Carbon::now()->addSeconds(3))
+            ->onQueue("m3u8");
+
+        dispatch($job);
+
 
 
         return response()->json(['status' => true],201);
